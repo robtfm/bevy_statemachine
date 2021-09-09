@@ -8,5 +8,7 @@ edition = "2018"
 [lib]
 
 [dependencies]
-bevy = "0.5" # { path = "../../bevy" }
+bevy = { git = "https://github.com/bevyengine/bevy", branch = "main", default-features = false }
+# bevy = "0.5" 
+# bevy = { path = "../../bevy" }
 bevy_statemachine_macros =  { git = "https://github.com/robtfm/bevy_statemachine" }

@@ -7,7 +7,7 @@ pub use bevy_statemachine_macros::exclusive_state;
 pub trait ExclusiveState : Component {
     type WithoutState : WorldQuery;
 
-    fn set_exclusive_state<'a, 'b, 'c, 'd>(self, commands: &'a mut EntityCommands<'b, 'c>) -> &'a mut EntityCommands<'b, 'c>;
+    fn set_exclusive_state<'a, 'b, 'c, 'd>(self, commands: &'a mut EntityCommands<'b, 'c, 'd>) -> &'a mut EntityCommands<'b, 'c, 'd>;
 }
 
 pub struct WithState<T>(PhantomData<T>);
@@ -22,7 +22,7 @@ pub trait ExclusiveStateTransitionEx {
     fn transition<T: ExclusiveState>(&mut self, state: T) -> &mut Self;
 }
 
-impl ExclusiveStateTransitionEx for EntityCommands<'_, '_> {
+impl ExclusiveStateTransitionEx for EntityCommands<'_, '_, '_> {
     fn transition<T: ExclusiveState>(&mut self, state: T) -> &mut Self {
         state.set_exclusive_state(self)
     }
@@ -90,8 +90,8 @@ pub mod test {
 
         // systems can run in parallel
         let mut stage = SystemStage::parallel();
-        stage.add_system(state_one_system.system());
-        stage.add_system(state_two_system.system());
+        stage.add_system(state_one_system);
+        stage.add_system(state_two_system);
 
         let one_id = world.spawn().insert(MyState::CaseOne(5.0)).insert(Data{ item: 1 }).id();
         let two_id = world.spawn().insert(MyState::CaseTwo).insert(Data{ item: 2 }).id();

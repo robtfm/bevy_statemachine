@@ -31,7 +31,7 @@ pub fn exclusive_state(input: TokenStream) -> TokenStream {
                     #( bevy::ecs::query::Without<#other_variants>, )*
                 );
 
-                fn set_exclusive_state<'a, 'b, 'c>(self, commands: &'a mut bevy::ecs::system::EntityCommands<'b, 'c>) -> &'a mut bevy::ecs::system::EntityCommands<'b, 'c> {
+                fn set_exclusive_state<'a, 'b, 'c, 'd>(self, commands: &'a mut bevy::ecs::system::EntityCommands<'b, 'c, 'd>) -> &'a mut bevy::ecs::system::EntityCommands<'b, 'c, 'd> {
                     commands.insert(self)
                         #( .remove::<#other_variants>() )*
                 }
