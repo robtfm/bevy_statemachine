@@ -585,7 +585,7 @@ name = "bevy_statemachine"
 version = "0.1.0"
 dependencies = [
  "bevy",
- "bevy_statemachine_macros 0.1.0 (git+https://github.com/robtfm/bevy_statemachine/)",
+ "bevy_statemachine_macros 0.1.0 (git+https://github.com/robtfm/bevy_statemachine)",
 ]
 
 [[package]]
@@ -600,7 +600,7 @@ dependencies = [
 [[package]]
 name = "bevy_statemachine_macros"
 version = "0.1.0"
-source = "git+https://github.com/robtfm/bevy_statemachine/#c7ffc56e9b77b813e64c7adc8ffd475d1b6c6f9e"
+source = "git+https://github.com/robtfm/bevy_statemachine#c7ffc56e9b77b813e64c7adc8ffd475d1b6c6f9e"
 dependencies = [
  "proc-macro2",
  "quote",

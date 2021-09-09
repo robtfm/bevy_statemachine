@@ -9,4 +9,4 @@ edition = "2018"
 
 [dependencies]
 bevy = "0.5" # { path = "../../bevy" }
-bevy_statemachine_macros =  { git = "https://github.com/robtfm/bevy_statemachine/bevy_statemachine_macros" }
+bevy_statemachine_macros =  { git = "https://github.com/robtfm/bevy_statemachine" }
